@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 void showaaa() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glRectf(-0.1f, -0.1f, 0.5f, 0.5f);
-	//glFlush();
+	glFlush();
 }
 
 void renderScene() {
