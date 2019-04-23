@@ -1,4 +1,5 @@
 ﻿  Main.cpp
-e:\graphicsmoudle\reshape function\main.cpp(79): warning C4326: “main”的返回类型应为“int”而非“void”
-  LINK : 没有找到 E:\GraphicsMoudle\Debug\reshape Function.exe 或上一个增量链接没有生成它；正在执行完全链接
+e:\graphicsmoudle\reshape function\main.cpp(45): warning C4101: “theta”: 未引用的局部变量
+e:\graphicsmoudle\reshape function\main.cpp(46): warning C4101: “k”: 未引用的局部变量
+e:\graphicsmoudle\reshape function\main.cpp(100): warning C4326: “main”的返回类型应为“int”而非“void”
   reshape Function.vcxproj -> E:\GraphicsMoudle\Debug\reshape Function.exe
