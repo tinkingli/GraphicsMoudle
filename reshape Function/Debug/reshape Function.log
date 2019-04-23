@@ -1,0 +1,3 @@
+﻿  Main.cpp
+g:\graphicsmoudle\reshape function\main.cpp(79): warning C4326: “main”的返回类型应为“int”而非“void”
+  reshape Function.vcxproj -> G:\GraphicsMoudle\Debug\reshape Function.exe
