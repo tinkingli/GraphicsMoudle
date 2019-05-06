@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 
+//2π
 const double TWO_PI = 6.2831853;
 
 GLsizei winWidth = 400, winHight = 400;
@@ -47,10 +48,12 @@ void Init()
 	int a =0;
 
 	circCtr.setCoords(winWidth / 2, winHight / 2);
+	//设置窗口的背景颜色设定为白色
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 
 	regHex = glGenLists(1);
 	glNewList(regHex, GL_COMPILE);
+	//在场景中绘制的对象颜色
 	glColor3f(1.0, 0.0, 0.0);
 	//显示一个填充的多边形
 	glBegin(GL_POLYGON);
@@ -109,7 +112,7 @@ void main(int argc, char* argv[])
 	Init();
 	//创建一个图形并将图的定义传递给GULT函数
 	glutDisplayFunc(regHexgon);
-	//指定显示窗口尺寸改变时的工作
+	//指定显示窗口尺寸改变时的工作，在这个里面可以根据缩放后的窗口重新设置
 	glutReshapeFunc(winReshapeFcn);
 	//所有创建的显示窗口连同图形一并被激活
 	glutMainLoop();
