@@ -1,0 +1,3 @@
+﻿  Main.cpp
+e:\graphicsmoudle\barchartdataplot\main.cpp(52): warning C4326: “main”的返回类型应为“int”而非“void”
+  BarChartDataPlot.vcxproj -> E:\GraphicsMoudle\Debug\BarChartDataPlot.exe
