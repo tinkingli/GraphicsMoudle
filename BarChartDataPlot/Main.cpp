@@ -1,5 +1,5 @@
 #include <GL/glut.h>
-GLsizei winWidth = 1000, winHight = 1000;
+GLsizei winWidth = 500, winHight = 700;
 
 GLint xRaster = 25, yRaster = 150;
 
@@ -10,8 +10,11 @@ GLint dataValue[12] = { 420, 342, 324, 310, 262, 185, 190, 196, 217, 240, 312, 4
 
 void Init()
 {
+	//设定窗口的背景颜色为白色
 	glClearColor(1.0, 1.0, 1.0, 1.0);
+	//将当前矩阵指定为投影矩阵
 	glMatrixMode(GL_PROJECTION);
+	//用于截取世界坐标系相应区域
 	gluOrtho2D(0.0, 500.0, 0.0, 600.0);
 }
 
@@ -42,19 +45,29 @@ void BarChart(void)
 
 void winReshapeFcn(GLint newWith, GLint newHight)
 {
+	//将当前矩阵指定为投影矩阵
 	glMatrixMode(GL_PROJECTION);
+	//对当前的矩阵进行初始化
 	glLoadIdentity();
+	//用于截取世界坐标系相应区域
 	gluOrtho2D(0.0, GLdouble(newWith), 0.0, GLdouble(newHight));
+	//指定刷新颜色缓冲区时所用的颜色
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void main(int argc, char** argv)
 {
+	//GLUT初始化
 	glutInit(&argc, argv);
+	//设定窗口的缓存和颜色
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	//设定窗口在显示器上的坐标
 	glutInitWindowPosition(200, 200);
+	//设定窗口的大小
 	glutInitWindowSize(winWidth, winHight);
+	//设定窗口的名字
 	glutCreateWindow("Bar Chart Data Por");
+	//执行Init方法
 	Init();
 	glutDisplayFunc(BarChart);
 	glutReshapeFunc(winReshapeFcn);

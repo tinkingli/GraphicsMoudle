@@ -91,8 +91,11 @@ void regHexgon()
 
 void winReshapeFcn(int newWidth, int newHeight)
 {
+	//将当前矩阵指定为投影矩阵
 	glMatrixMode(GL_PROJECTION);
+	//对当前的矩阵进行初始化
 	glLoadIdentity();
+
 	gluOrtho2D(0.0, (GLdouble)newWidth, 0.0, (GLdouble)newHeight);
 	glClear(GL_COLOR_BUFFER_BIT);
 }
