@@ -1,5 +1,6 @@
 #include <GL/glut.h>
 
+//定义屏幕的大小
 GLsizei  winWidth = 600, winHight = 600;
 
 GLint xRaster = 25, yRaster = 150;
@@ -12,32 +13,44 @@ GLint dataValue[12] = { 420, 342, 324, 310, 262, 185, 190, 196, 217, 240, 312, 4
 
 void init(void)
 {
+	//设定窗口的颜色为白色
 	glClearColor(1.0, 1.0, 1.0, 1.0);
+	//将当前的投影设置成举
 	glMatrixMode(GL_PROJECTION);
+	//用于截取世界坐标系响应区域
 	gluOrtho2D(0.0, 600.0, 0.0, 500.0);
 }
 
 void lineGraph(void)
 {
+	//
 	GLint month, k;
+	//定义一个int数据结构的 x变量
 	GLint x = 30;
+	//指定刷新颜色缓冲区时所用的颜色
 	glClear(GL_COLOR_BUFFER_BIT);
+	//在场景中绘制的对象颜色
 	glColor3f(0.0, 0.0, 1.0);
-
+	//开始绘制一条连续的线
 	glBegin(GL_LINE_STRIP);
 	for (k = 0; k < 12; k++)
 	{
+		//绘制一条线
 		glVertex2i(x + k * 50, dataValue[k]);
 	}
+	//结束绘制线
 	glEnd();
 
+	//在场景中绘制的对象颜色
 	glColor3f(1.0, 0.0, 0.0);
 	for (k = 0; k < 12; k++)
 	{
 		glRasterPos2i(xRaster + k * 50, dataValue[k] - 4);
+		//选择一种字体和一个位图字符来显示
 		glutBitmapCharacter(GLUT_BITMAP_9_BY_15, '*');
 	}
 
+	//在场景中绘制的对象颜色
 	glColor3f(0.0, 0.0, 0.0);
 	xRaster = 20;
 	for (month = 0; month < 12; month++)
@@ -62,11 +75,17 @@ void winReshapeFcn(GLint newWith, GLint newHight)
 
 void main(int argc, char** argv)
 {
+	//初始化glut
 	glutInit(&argc, argv);
+	//设定窗口的缓存和颜色
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	//设置窗口在显示器的坐标
 	glutInitWindowPosition(100, 100);
+	//设置窗口的大小
 	glutInitWindowSize(winWidth, winHight);
+	//设置窗口的名字
 	glutCreateWindow("Line Chart Data Plot");
+	//执行init方法
 	init();
 	glutDisplayFunc(lineGraph);
 	glutReshapeFunc(winReshapeFcn);
