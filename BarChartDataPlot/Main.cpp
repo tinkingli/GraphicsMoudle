@@ -29,6 +29,7 @@ void BarChart(void)
 		glRecti(20 + k * 50, 165, 40 + k * 50, dataValue[k]);
 	}
 
+	//在场景中绘制的对象颜色
 	glColor3f(0.0, 0.0, 0.0);
 	xRaster = 20;
 	for (month = 0; month < 12; month++)
@@ -36,10 +37,12 @@ void BarChart(void)
 		glRasterPos2i(xRaster, yRaster);
 		for (k = 3 * month; k < 3 * month + 3; k++)
 		{
+			//选择一种字体和一个位图的字体显示
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, label[k]);
 		}
 		xRaster += 50;
 	}
+	//清空所有缓存来执行OPENGL函数
 	glFlush();
 }
 
@@ -69,8 +72,11 @@ void main(int argc, char** argv)
 	glutCreateWindow("Bar Chart Data Por");
 	//执行Init方法
 	Init();
+	//创建一个图形饼将图形的定义传给GLUT函数
 	glutDisplayFunc(BarChart);
+	//指定显示窗口尺寸改变时的工作，在这个里面根据缩放后的窗口重新设置
 	glutReshapeFunc(winReshapeFcn);
+	//所有创建的显示窗口连同图形一并激活
 	glutMainLoop();
 
 }

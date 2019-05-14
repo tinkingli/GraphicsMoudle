@@ -45,6 +45,7 @@ void lineGraph(void)
 	glColor3f(1.0, 0.0, 0.0);
 	for (k = 0; k < 12; k++)
 	{
+		//用于字体的起始位置
 		glRasterPos2i(xRaster + k * 50, dataValue[k] - 4);
 		//选择一种字体和一个位图字符来显示
 		glutBitmapCharacter(GLUT_BITMAP_9_BY_15, '*');
@@ -55,21 +56,28 @@ void lineGraph(void)
 	xRaster = 20;
 	for (month = 0; month < 12; month++)
 	{
+		//用于字体的起始位置
 		glRasterPos2i(xRaster, yRaster);
 		for (k = 3 * month; k < 3 * month + 3; k++)
 		{
+			//选择一种字体和一个位图字符来显示
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, label[k]);
 		}
 		xRaster += 50;
 	}
+	//强制清空所有缓存来执行处理OPENGL函数
 	glFlush();
 }
 
 void winReshapeFcn(GLint newWith, GLint newHight)
 {
+    //当前投影为矩阵投影
 	glMatrixMode(GL_PROJECTION);
+	//对当前的矩阵初始化
 	glLoadIdentity();
+	//用于截取世界坐标系相应区域
 	gluOrtho2D(0.0, GLdouble(newWith), 0.0, GLdouble(newHight));
+	//指定刷新颜色缓冲区
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
@@ -87,8 +95,11 @@ void main(int argc, char** argv)
 	glutCreateWindow("Line Chart Data Plot");
 	//执行init方法
 	init();
+	//创建一个图形并将图的定义传递给GULT函数
 	glutDisplayFunc(lineGraph);
+	//创建一个图形并将图的定义传递给GULT函数
 	glutReshapeFunc(winReshapeFcn);
+	//所有创建的显示窗口连同图形一并被激活
 	glutMainLoop();
 
 }
